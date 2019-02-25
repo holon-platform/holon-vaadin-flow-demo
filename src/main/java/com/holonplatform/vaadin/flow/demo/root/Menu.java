@@ -37,9 +37,6 @@ public class Menu extends HorizontalLayout implements RouterLayout, Authenticati
 	private Button btnDashboard;
 	private Button btnUsers;
 	private Button btnProducts;
-	private Button btnLogout;
-
-	private static final String SELECTED_STYLE = "selected";
 
 	public Menu() {
 		super();
@@ -84,8 +81,8 @@ public class Menu extends HorizontalLayout implements RouterLayout, Authenticati
 									resetStyles();
 									btnProducts.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 								}).build(),
-						btnLogout = Components.button().text("Logout").withThemeVariants(ButtonVariant.LUMO_LARGE)
-								.width("100%").onClick(evt -> {
+						Components.button().text("Logout").withThemeVariants(ButtonVariant.LUMO_LARGE).width("100%")
+								.onClick(evt -> {
 									logout();
 									// Navigator.get().navigateTo("");
 								}).build(),
