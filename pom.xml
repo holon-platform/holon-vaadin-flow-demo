@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.holon-platform.demo</groupId>
+	<artifactId>holon-flow-demo</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<properties>
+		<holon.platform.version>5.2.1</holon.platform.version>
+		<holon.artisan.vaadin.flow.components.version>1.0.0-SNAPSHOT</holon.artisan.vaadin.flow.components.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<spring.boot.version>2.1.1.RELEASE</spring.boot.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>vaadin-addons</id>
+			<url>http://maven.vaadin.com/vaadin-addons</url>
+		</repository>
+	</repositories>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.holon-platform</groupId>
+				<artifactId>bom</artifactId>
+				<version>${holon.platform.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- Holon: JDBC starter -->
+		<dependency>
+			<groupId>com.holon-platform.jdbc</groupId>
+			<artifactId>holon-starter-jdbc-datastore-hikaricp</artifactId>
+		</dependency>
+
+		<!-- Holon: Vaadin starter -->
+		<dependency>
+			<groupId>com.holon-platform.vaadin</groupId>
+			<artifactId>holon-starter-vaadin-flow</artifactId>
+		</dependency>
+
+		<!-- Holon: Artisan Vaadin Flow components -->
+		<dependency>
+			<groupId>com.holon-platform.artisan</groupId>
+			<artifactId>holon-artisan-vaadin-flow-components</artifactId>
+			<version>${holon.artisan.vaadin.flow.components.version}</version>
+		</dependency>
+
+		<!-- H2 -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.197</version>
+		</dependency>
+
+		<!-- Vaadin Board add-on -->
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-board-flow</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+
+		<!-- Vaadin Charts add-on -->
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-charts-flow</artifactId>
+			<version>6.3.0</version>
+		</dependency>
+	</dependencies>
+
+</project>
