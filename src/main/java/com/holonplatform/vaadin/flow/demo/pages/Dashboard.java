@@ -25,10 +25,7 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.holonplatform.core.query.QueryFilter;
 import com.holonplatform.vaadin.flow.components.Components;
-import com.holonplatform.vaadin.flow.demo.components.StorefrontListing;
-import com.holonplatform.vaadin.flow.demo.models.Order;
 import com.holonplatform.vaadin.flow.demo.root.Menu;
 import com.holonplatform.vaadin.flow.demo.services.OrderDataService;
 import com.vaadin.flow.component.board.Board;
@@ -38,10 +35,8 @@ import com.vaadin.flow.component.charts.model.Configuration;
 import com.vaadin.flow.component.charts.model.Cursor;
 import com.vaadin.flow.component.charts.model.DataSeries;
 import com.vaadin.flow.component.charts.model.DataSeriesItem;
-import com.vaadin.flow.component.charts.model.Labels;
 import com.vaadin.flow.component.charts.model.ListSeries;
 import com.vaadin.flow.component.charts.model.PlotOptionsArea;
-import com.vaadin.flow.component.charts.model.PlotOptionsColumn;
 import com.vaadin.flow.component.charts.model.PlotOptionsPie;
 import com.vaadin.flow.component.charts.model.Stacking;
 import com.vaadin.flow.component.charts.model.TickmarkPlacement;
@@ -54,7 +49,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
 @Route(value = "dashboard", layout = Menu.class)
-public class Dashboard extends VerticalLayout {
+public class Dashboard extends Div {
 
 	private static final long serialVersionUID = 1L;
 
@@ -68,9 +63,12 @@ public class Dashboard extends VerticalLayout {
 	@PostConstruct
 	public void init() {
 
+		setSizeFull();
+		getStyle().set("padding", "10px");
+		getStyle().set("overflow-y", "auto");
+
 		Board board = new Board();
-		board.setSizeFull();
-		board.getStyle().set("overflow", "auto");
+		board.setWidth("100%");
 
 		String todayDeliveriesOrders = orderDataService.getTodayDeliveries().toString() + "/"
 				+ orderDataService.getTodayOrders().toString();
@@ -100,13 +98,6 @@ public class Dashboard extends VerticalLayout {
 
 		board.addRow(remainingVl, notAvailableVl, newVl, tomorrowVl).getStyle().set("background-color", "#f3f5f7");
 
-		////////////////
-		StorefrontListing sl = new StorefrontListing();
-		sl.setSizeFull();
-
-		board.add(sl);
-		////////////////
-
 		Configuration conf = monthlyProductSplit.getConfiguration();
 		conf.setTitle(("Products delivered in " + LocalDate.now().getMonth().getDisplayName(TextStyle.FULL, Locale.US))
 				.toUpperCase());
@@ -117,42 +108,15 @@ public class Dashboard extends VerticalLayout {
 		Map<String, Number> deliveredProductsMap = orderDataService.getDeliveredProductsLastMonth();
 		deliveredProductsMap.forEach((k, v) -> deliveriesPerProductSeries.add(new DataSeriesItem(k, v)));
 
-		// board.addRow(addMonthDeliveriesChart()/* , addYearDeliveriesChart() */);
-		// board.addRow(Components.hl().add(addYearlySalesChart(), addMonthlyProductSplitChart()).build());
-		// board.addRow(addYearlySalesChart(), addMonthlyProductSplitChart());
+		board.addRow(addMonthDeliveriesChart(), addYearDeliveriesChart());
+		board.addRow(addYearlySalesChart(), addMonthlyProductSplitChart());
 
-		Components.configure(this).fullSize();
-		getStyle().set("overflow", "auto");
-
-		// add(board);
-		// .fullWidth()
-		// .spacing().add(board);
-
-		// setFlexGrow(1, board);
-		// getStyle().set("overflow-y", "auto");
-
-		add(addMonthDeliveriesChart(), addYearDeliveriesChart());
-	}
-
-	private static void configureColumnSeries(ListSeries series) {
-		PlotOptionsColumn options = new PlotOptionsColumn();
-		options.setEdgeWidth(1);
-		options.setGroupPadding(0);
-		series.setPlotOptions(options);
-
-		YAxis yaxis = series.getConfiguration().getyAxis();
-		yaxis.setLabels(new Labels(false));
-		yaxis.setTitle("");
-	}
-
-	private static QueryFilter buildFilter() {
-		return Order.DUE_DATE.goe(LocalDate.now());
+		add(board);
 	}
 
 	private Chart addMonthDeliveriesChart() {
 		Chart chart = new Chart();
-		// chart.setSizeFull();
-		// chart.setHeight("150px");
+
 		Configuration configuration = chart.getConfiguration();
 		configuration.setTitle(("Deliveries in " + LocalDate.now().getMonth().getDisplayName(TextStyle.FULL, Locale.US))
 				.toUpperCase());
@@ -184,7 +148,7 @@ public class Dashboard extends VerticalLayout {
 
 	private Chart addYearDeliveriesChart() {
 		Chart chart = new Chart();
-		// chart.setHeight("150px");
+
 		Configuration configuration = chart.getConfiguration();
 		configuration.setTitle(("Deliveries in " + LocalDate.now().getYear()).toUpperCase());
 		chart.getConfiguration().getChart().setType(ChartType.COLUMN);
@@ -210,7 +174,7 @@ public class Dashboard extends VerticalLayout {
 
 	private Chart addYearlySalesChart() {
 		Chart chart = new Chart(ChartType.AREA);
-		// chart.setHeight("300px");
+
 		final Configuration configuration = chart.getConfiguration();
 
 		configuration.setTitle("Sales last years".toUpperCase());
@@ -248,6 +212,7 @@ public class Dashboard extends VerticalLayout {
 
 	private Chart addMonthlyProductSplitChart() {
 		Chart chart = new Chart(ChartType.PIE);
+
 		Configuration conf = chart.getConfiguration();
 
 		conf.setTitle(("Products delivered in " + LocalDate.now().getMonth().getDisplayName(TextStyle.FULL, Locale.US))

@@ -84,17 +84,8 @@ public class Menu extends HorizontalLayout implements RouterLayout, Authenticati
 						Components.button().text("Logout").withThemeVariants(ButtonVariant.LUMO_LARGE).width("100%")
 								.onClick(evt -> {
 									logout();
-									// Navigator.get().navigateTo("");
-								}).build(),
-
-						Components.button().text("Test UI").withThemeVariants(ButtonVariant.LUMO_LARGE).width("100%")
-								.onClick(evt -> {
-									Navigator.get().navigateTo("testui");
-									resetStyles();
-									btnProducts.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-								}).build()
-
-				).build())
+								}).build())
+						.build())
 				.add(Components.vl().withoutPadding().add(holonLogo).align(holonLogo, Alignment.CENTER).build())
 				.justifyContentMode(JustifyContentMode.BETWEEN).align(lblArtisan, Alignment.CENTER).build();
 

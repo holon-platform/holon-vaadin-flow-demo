@@ -1,6 +1,15 @@
 <custom-style>
 	<style>		
 		
+		/* workaround to fix Vaadin Charts overflow issue in FireFox  */
+	  	body {
+      		overflow: hidden;
+      	}
+      	
+      	vaadin-license-box {
+      		display: none;
+      	}
+		
 		/* LOGIN */
 		.login-background {
 			background-color: #f3f5f7;

@@ -55,7 +55,8 @@ public class Users extends VerticalLayout implements QueryConfigurationProvider,
 	@PostConstruct
 	public void init() {
 
-		searchField = Components.input.string()/*.fullWidth()*/.placeholder("Search").prefixComponent(new Icon(VaadinIcon.SEARCH))
+		searchField = Components.input.string()/* .fullWidth() */.placeholder("Search")
+				.prefixComponent(new Icon(VaadinIcon.SEARCH))
 				.withValueChangeListener(event -> propertyListing.refresh()).valueChangeMode(ValueChangeMode.EAGER)
 				.build();
 
@@ -70,10 +71,9 @@ public class Users extends VerticalLayout implements QueryConfigurationProvider,
 
 		Components.configure(this).spacing().withoutMargin()
 				// horizontal toolbar
-				.add(Components.hl()/*.fullWidth()*/.spacing()
+				.add(Components.hl().fullWidth().spacing()
 						// search field
-						.addAndExpand(searchField.getComponent(), 1d)
-						.add(searchField.getComponent())
+						.addAndExpand(searchField.getComponent(), 1d).add(searchField.getComponent())
 						// btn new
 						.add(Components.button().text("Add new").icon(VaadinIcon.PLUS)
 								.withThemeVariants(ButtonVariant.LUMO_PRIMARY).onClick(event -> {
