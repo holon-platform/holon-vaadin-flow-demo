@@ -47,9 +47,6 @@ public class Login extends HorizontalLayout {
 												usn = ValidatableInput
 														.builder(Components.input.string().label("Username").required()
 																.prefixComponent(new Icon(VaadinIcon.USER))
-
-																.withValue("admin@holon-platform.com")
-
 																.styleName("userfield").blankValuesAsNull(
 																		true)
 																.fullWidth().build())
@@ -59,9 +56,6 @@ public class Login extends HorizontalLayout {
 										.add(pwd = ValidatableInput
 												.builder(Components.input.secretString().label("Password").required()
 														.prefixComponent(new Icon(VaadinIcon.LOCK))
-
-														.withValue("admin")
-
 														.styleName("passwordfield").blankValuesAsNull(true).fullWidth()
 														.build())
 												.validateOnValueChange(false).withValidator(Validator.notBlank())
