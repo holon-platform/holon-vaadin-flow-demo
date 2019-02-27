@@ -1,34 +1,73 @@
-# Holon platform examples: Vaadin Flow UI
+# Holon platform Vaadin Flow demo application: Bakery online store
 
-_This is one of the [Holon Platform](https://holon-platform.com) example projects._
+_This is a demo project built with the [Holon Platform](https://holon-platform.com)._
 
-This example shows how to setup a simple web application using [Vaadin Flow](https://vaadin.com/flow) as UI engine and the Holon Platform Vaadin Flow module, wich provides integration with the Holon Platform foundation architecture, such as the `Property` model and the `Datastore` API.
+## Description
+
+This is a full stack web application that simulates the online order management of a bakery. Starting from product and user records, it is possible to manage daily orders and to analyze sales data.
+
+The aim of the project is to show how to create a full stack application using __Vaadin Flow__ in combination with the __Vaadin Flow module of the Holon Platform__.
+
+## Features
+These are the main features of the Bakery web application:
+1. Backoffice function to insert and manage users
+2. Backoffice function to insert and manage bakery products
+3. Storefront function to manage the whole lifecycle of the orders
+4. Analysis function on sales data through dynamic graphs
+
+## Full stack architecture
+
+* __Spring Boot__ for packaging, configuring and running
+
+* __H2 in memory Database__ with minimal configuration
+
+* __Holon Platform__ with the following modules: 
+  1. __JDBC__ module
+  2. __Vaadin Flow__ module
+  3. __Artisan__ module
+
+* __Vaadin Addons:__
+  1. [Charts](https://vaadin.com/components/vaadin-charts)
+  2. [Board](https://vaadin.com/components/vaadin-board)
 
 ## Topics
 
 This example addresses the following topics:
 
 * Setup a web application using the Holon Platform __Vaadin Flow__ integration and __Spring Boot__ auto-configuration support.
-@ Use the `@QueryParameter` annotation to inject query parameter values in routing targets.
-* Use the `Navigator` API to handle application _routing_.
-* Use the Holon Platform `Property` model and `Datastore` API with the Vaadin components to display and manage a data entity.
+* Use `Realm` to manage authentication/authorization aspects
+* Use the `Navigator` API to handle application _routing_ and the `@Route` annotation to define routing targets. 
+* Use the Holon Platform `Property` model and `Datastore` API with the Vaadin Flow components to display and manage application entities.
 
-## Example structure
+## Data and routing
 
-The [Product](src/main/java/com/holonplatform/example/ui/vaadin/app/model/Product.java) class represents the property model for a simple _product_ data entity.
+A __JDBC__ `Datastore` backed by a __H2 database__ is used for product data persistence. All tables listed defined in `schema.sql` file are created at startup and populated using the `data.sql` file.
 
-A __JDBC__ `Datastore` backed by a __H2 database__ is used for product data persistence, using a table named `products` created using the `schema.sql` file and populated using the `data.sql` file.
+The Bakery application is composed by these _routes_:
 
-This application is composed by three _routes_:
+* [Login](src/main/java/com/holonplatform/example/ui/vaadin/app/routes/Login.java): the first page to enter credentials
+* [Storefront](src/main/java/com/holonplatform/example/ui/vaadin/app/routes/Storefront.java): the home page, where all the orders are listed and can be modified 
+* [Products](src/main/java/com/holonplatform/example/ui/vaadin/app/routes/Products.java): page to view all products at the store, insert new ones and modify the present ones
+* [Users](src/main/java/com/holonplatform/example/ui/vaadin/app/routes/Users.java): page to view current users, insert new ones and modify the present ones
+* [Dashboard](src/main/java/com/holonplatform/example/ui/vaadin/app/routes/Dashboard.java): page to analize order data through charts
 
-* [Home](src/main/java/com/holonplatform/example/ui/vaadin/app/routes/Home.java): the home view, listing all the available products and allowing to: edit the product data by clicking on a row, delete a product using a component column.
-* [Manage](src/main/java/com/holonplatform/example/ui/vaadin/app/routes/Manage.java): manages the product data, providing an input form to create or update a product.
+## Run the demo
 
-## Run this example
+The Bakery demo is configured using __Spring Boot__. So from command prompt run 
 
-This example is configured using __Spring Boot__, so you just have to run the `Application` class, open a web browser and navigate to:
+`mvn spring-boot:run`
+
+or run the `Application` class.
+
+After application startup navigate to:
 
 `http://localhost:8080`
+
+It will be prompted username and password to login. Standard users are:
+* admin@holon-platform.com / admin
+* barista@holon-platform.com / barista
+
+Note that the demo will be rendered correctly using FireFox. Chrome still has problems rendering Vaadin Grids.
 
 ## Documentation
 
@@ -37,11 +76,12 @@ The complete _Holon Platform reference guide_ is available [here](https://docs.h
 For the specific documentation about the modules and the components used in this example see:
 
 * Documentation about the [Datastore](https://docs.holon-platform.com/current/reference/holon-core.html#Datastore)  API
+* Documentation about the [Realm](https://docs.holon-platform.com/current/reference/holon-core.html#Realm)  API
 * Documentation about the [Vaadin Flow module](https://docs.holon-platform.com/current/reference/holon-vaadin-flow.html)
 
 ## System requirements
 
-The Holon Platform is built using __Java 8__, so you need a JRE/JDK version 8 or above to build and run this example projects.
+The Holon Platform is built using __Java 8__, so you need a JRE/JDK version 8 or above to build and run this demo project.
 
 ## License
 
@@ -49,4 +89,4 @@ All the [Holon Platform](https://holon-platform.com) modules and examples are _O
 
 ## Holon Platform Examples
 
-See [Holon Platform Examples](https://github.com/holon-platform/holon-examples) for the examples directory.
+See [Holon Platform Vaadin Flow Demo](https://github.com/holon-platform/holon-vaadin-flow-demo) for the demo web application directory.
