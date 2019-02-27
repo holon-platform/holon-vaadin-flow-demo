@@ -45,11 +45,11 @@ A __JDBC__ `Datastore` backed by a __H2 database__ is used for product data pers
 
 The Bakery application is composed by these _routes_:
 
-* [Login](src/main/java/com/holonplatform/example/ui/vaadin/app/routes/Login.java): the first page to enter credentials
-* [Storefront](src/main/java/com/holonplatform/example/ui/vaadin/app/routes/Storefront.java): the home page, where all the orders are listed and can be modified 
-* [Products](src/main/java/com/holonplatform/example/ui/vaadin/app/routes/Products.java): page to view all products at the store, insert new ones and modify the present ones
-* [Users](src/main/java/com/holonplatform/example/ui/vaadin/app/routes/Users.java): page to view current users, insert new ones and modify the present ones
-* [Dashboard](src/main/java/com/holonplatform/example/ui/vaadin/app/routes/Dashboard.java): page to analize order data through charts
+* [Login](src/main/java/com/holonplatform/vaadin/flow/demo/pages/Login.java): the first page to enter credentials
+* [Storefront](src/main/java/com/holonplatform/vaadin/flow/demo/pages/Storefront.java): the home page, where all the orders are listed and can be modified 
+* [Products](src/main/java/com/holonplatform/vaadin/flow/demo/pages/Products.java): page to view all products at the store, insert new ones and modify the present ones
+* [Users](src/main/java/com/holonplatform/vaadin/flow/demo/pages/Users.java): page to view current users, insert new ones and modify the present ones
+* [Dashboard](src/main/java/com/holonplatform/vaadin/flow/demo/pages/Dashboard.java): page to analize order data through charts
 
 ## Run the demo
 
