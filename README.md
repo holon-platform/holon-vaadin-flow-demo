@@ -1,4 +1,4 @@
-# Holon platform Vaadin Flow demo application: Bakery online store
+# Holon platform Vaadin Flow demo application: Bakery online store :+1:
 
 _This is a demo project built with the [Holon Platform](https://holon-platform.com)._
 
