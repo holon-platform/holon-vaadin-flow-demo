@@ -10,10 +10,10 @@ The aim of the project is to show how to create a full stack application using _
 
 ## Features
 These are the main features of the Bakery web application:
-1. Backoffice function to insert and manage users
-2. Backoffice function to insert and manage bakery products
-3. Storefront function to manage the whole lifecycle of the orders
-4. Analysis function on sales data through dynamic graphs
+1. *Backoffice function* to insert and manage users
+2. *Backoffice function* to insert and manage bakery products
+3. *Storefront function* to manage the whole lifecycle of the orders
+4. *Analysis function* on sales data through dynamic graphs
 
 ## Full stack architecture
 
