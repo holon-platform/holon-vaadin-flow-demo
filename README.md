@@ -1,4 +1,4 @@
-# Holon platform Vaadin Flow demo application: Bakery online store :+1:
+# Holon platform Vaadin Flow demo application: Bakery online store
 
 _This is a demo project built with the [Holon Platform](https://holon-platform.com)._
 
@@ -9,6 +9,7 @@ This is a full stack web application that simulates the online order management 
 The aim of the project is to show how to create a full stack application using __Vaadin Flow__ in combination with the __Vaadin Flow module of the Holon Platform__.
 
 ## Features
+:+1: :+2: :+3: :+4: :+5:
 These are the main features of the Bakery web application:
 1. Backoffice function to insert and manage users
 2. Backoffice function to insert and manage bakery products
