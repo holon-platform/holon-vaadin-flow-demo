@@ -9,7 +9,6 @@
 
 	<properties>
 		<holon.platform.version>5.2.1</holon.platform.version>
-		<holon.artisan.vaadin.flow.components.version>1.0.0-SNAPSHOT</holon.artisan.vaadin.flow.components.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<spring.boot.version>2.1.1.RELEASE</spring.boot.version>
@@ -45,13 +44,6 @@
 		<dependency>
 			<groupId>com.holon-platform.vaadin</groupId>
 			<artifactId>holon-starter-vaadin-flow</artifactId>
-		</dependency>
-
-		<!-- Holon: Artisan Vaadin Flow components -->
-		<dependency>
-			<groupId>com.holon-platform.artisan</groupId>
-			<artifactId>holon-artisan-vaadin-flow-components</artifactId>
-			<version>${holon.artisan.vaadin.flow.components.version}</version>
 		</dependency>
 
 		<!-- H2 -->

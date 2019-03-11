@@ -20,15 +20,15 @@ import java.util.List;
 import com.holonplatform.core.property.PropertyBox;
 
 public class OrderDataImpl implements OrderData {
-	
+
 	private PropertyBox order;
 	private PropertyBox customer;
-	private List<PropertyBox> orderItems; 
+	private List<PropertyBox> orderItems;
 	private List<PropertyBox> orderHistory;
-	private Double totalPrice;
-	
-	private OrderDataImpl() {}
-	
+
+	private OrderDataImpl() {
+	}
+
 	public void setOrder(PropertyBox order) {
 		this.order = order;
 	}
@@ -40,13 +40,9 @@ public class OrderDataImpl implements OrderData {
 	public void setOrderItems(List<PropertyBox> orderItems) {
 		this.orderItems = orderItems;
 	}
-	
+
 	public void setOrderHistory(List<PropertyBox> orderHistory) {
 		this.orderHistory = orderHistory;
-	}
-
-	public void setTotalPrice(Double totalPrice) {
-		this.totalPrice = totalPrice;
 	}
 
 	@Override
@@ -63,19 +59,14 @@ public class OrderDataImpl implements OrderData {
 	public List<PropertyBox> getOrderItems() {
 		return orderItems;
 	}
-	
+
 	@Override
 	public List<PropertyBox> getOrderHistory() {
 		return orderHistory;
 	}
 
-	@Override
-	public Double getTotalPrice() {
-		return totalPrice;
-	}
-	
 	public static final class BuilderImpl implements OrderData.Builder {
-		
+
 		private final OrderDataImpl orderDataInstance = new OrderDataImpl();
 
 		@Override
@@ -95,23 +86,17 @@ public class OrderDataImpl implements OrderData {
 			orderDataInstance.setOrderItems(values);
 			return this;
 		}
-		
+
 		@Override
 		public Builder orderHistory(List<PropertyBox> values) {
 			orderDataInstance.setOrderHistory(values);
-			return this;
-		}
-		
-		@Override
-		public Builder totalPrice(Double value) {
-			orderDataInstance.setTotalPrice(value);
 			return this;
 		}
 
 		@Override
 		public OrderData build() {
 			return orderDataInstance;
-		}	
+		}
 	}
-	
+
 }

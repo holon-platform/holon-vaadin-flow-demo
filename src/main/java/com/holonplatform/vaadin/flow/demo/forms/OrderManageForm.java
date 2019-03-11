@@ -52,7 +52,7 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextFieldVariant;
 
-public class OrderReviewForm extends VerticalLayout {
+public class OrderManageForm extends VerticalLayout {
 
 	private static final long serialVersionUID = 1L;
 
@@ -76,7 +76,7 @@ public class OrderReviewForm extends VerticalLayout {
 	private OrderData orderData;
 	private Runnable runnable;
 
-	public OrderReviewForm(OrderData orderData, Consumer<Double> consumer, Runnable runnable) {
+	public OrderManageForm(OrderData orderData, Consumer<Double> consumer, Runnable runnable) {
 		super();
 		this.orderData = orderData;
 		this.consumer = consumer;
@@ -286,7 +286,7 @@ public class OrderReviewForm extends VerticalLayout {
 							// close btn
 							.add(btnClose = Components.button().icon(VaadinIcon.CLOSE_SMALL)
 									.withThemeVariants(ButtonVariant.LUMO_ICON).disabled().onClick(evt -> {
-										OrderReviewForm.this.remove(orderItemsMap.get(orderItemSeq));
+										OrderManageForm.this.remove(orderItemsMap.get(orderItemSeq));
 										orderItemsMap.remove(orderItemSeq);
 
 										// consumer: set window footer with total order price

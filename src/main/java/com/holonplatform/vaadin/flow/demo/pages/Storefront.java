@@ -2,21 +2,17 @@ package com.holonplatform.vaadin.flow.demo.pages;
 
 import java.time.LocalDate;
 
-import com.holonplatform.artisan.vaadin.flow.components.Window;
-import com.holonplatform.artisan.vaadin.flow.components.builders.WindowBuilder;
 import com.holonplatform.core.datastore.relational.SubQuery;
-import com.holonplatform.core.i18n.LocalizationContext;
 import com.holonplatform.core.query.QueryFilter;
 import com.holonplatform.vaadin.flow.components.Components;
 import com.holonplatform.vaadin.flow.components.Input;
 import com.holonplatform.vaadin.flow.demo.components.StorefrontListing;
-import com.holonplatform.vaadin.flow.demo.forms.OrderReviewForm;
+import com.holonplatform.vaadin.flow.demo.dialogs.OrderManageDialog;
 import com.holonplatform.vaadin.flow.demo.models.Customer;
 import com.holonplatform.vaadin.flow.demo.models.Order;
 import com.holonplatform.vaadin.flow.demo.root.Menu;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.HtmlImport;
-import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -30,19 +26,18 @@ public class Storefront extends VerticalLayout {
 	private static final long serialVersionUID = 1L;
 
 	private Input<String> searchField;
-	private Span totalPriceSpan;
 
 	public Storefront() {
 		super();
-		StorefrontListing listing = new StorefrontListing();
-		listing.setFilterSupplier(() -> buildFilter());
+		StorefrontListing storefrontListing = new StorefrontListing();
+		storefrontListing.setFilterSupplier(() -> buildFilter());
 
 		searchField = Components.input.string().placeholder("Search").prefixComponent(new Icon(VaadinIcon.SEARCH))
 				.fullWidth().withValueChangeListener(evt -> {
-					listing.setFilterSupplier(() -> {
+					storefrontListing.setFilterSupplier(() -> {
 						return buildFilter();
 					});
-					listing.refresh();
+					storefrontListing.refresh();
 				}).valueChangeMode(ValueChangeMode.EAGER).build();
 
 		Components.configure(this).fullWidth().spacing().withoutMargin()
@@ -53,34 +48,12 @@ public class Storefront extends VerticalLayout {
 						// btn new
 						.add(Components.button().text("New order").styleName("storefront-btn").icon(VaadinIcon.PLUS)
 								.withThemeVariants(ButtonVariant.LUMO_PRIMARY).onClick(event -> {
-									OrderReviewForm form = new OrderReviewForm(null,
-											// consumer behaviour
-											totalOrderPrice -> totalPriceSpan.setText("Total $"
-													+ LocalizationContext.require().format(totalOrderPrice, 2)),
-											() -> listing.refresh());
-									WindowBuilder wndBuilder = Window.builder().content(form);
-									Window wnd = wndBuilder.build();
-									wndBuilder
-											// footer
-											.withFooterComponent(Components.hl().fullWidth()
-													.add(Components.button().text("Cancel").build())
-													.add(Components.hl().spacing()
-															.add(totalPriceSpan = Components.span()
-																	.styleName("total-price").text("Total $0.00")
-																	.build())
-															.add(Components.button().icon(VaadinIcon.ARROW_RIGHT)
-																	.text("Review order")
-																	.withThemeVariants(ButtonVariant.LUMO_PRIMARY)
-																	.iconAfterText(true).onClick(evt -> {
-																		form.placeOrder();
-																		wnd.close();
-																	}).build())
-															.build())
-													.justifyContentMode(JustifyContentMode.BETWEEN).build())
-											.width("700px").build().open();
+									OrderManageDialog omd = new OrderManageDialog(null,
+											storefrontListing.getPropertyListing());
+									omd.open();
 								}).build())
 						.build())
-				.add(listing);
+				.add(storefrontListing);
 	}
 
 	private QueryFilter buildFilter() {

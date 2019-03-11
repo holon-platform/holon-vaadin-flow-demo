@@ -1,0 +1,24 @@
+<dom-module id="com-holonplatform-vaadin-dialogs" theme-for="vaadin-dialog-overlay">
+  <template>
+    <style>
+      :host([theme~="orders"]) [part="content"] {
+        width: 100%;
+        max-width: 65em;
+      }
+      :host([theme~="orders"]) [part="overlay"] {
+        display: flex;
+        min-width: 300px;
+      }
+    </style>
+  </template>
+</dom-module> 
+
+<custom-style>
+  <style>
+    vaadin-dialog-overlay[theme~="orders"] flow-component-renderer > div {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }    
+  </style>
+</custom-style>   
