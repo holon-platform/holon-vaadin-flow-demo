@@ -6,7 +6,7 @@ _This is a demo project built with the [Holon Platform](https://holon-platform.c
 
 This is a full stack web application that simulates the online order management of a bakery. Starting from product and user records, it is possible to manage daily orders and to analyze sales data.
 
-The aim of the project is to show how to create a full stack application using __Vaadin Flow__ in combination with the __Vaadin Flow module of the Holon Platform__.
+The aim of the project is to show how to create a full stack application using __Vaadin Flow__ in combination with the [Vaadin Flow module of the Holon Platform](https://github.com/holon-platform/holon-vaadin-flow).
 
 ## Features
 These are the main features of the Bakery web application:
@@ -22,9 +22,8 @@ These are the main features of the Bakery web application:
 * __H2 in memory Database__ with minimal configuration
 
 * __Holon Platform__ with the following modules: 
-  1. __JDBC__ module
-  2. __Vaadin Flow__ module
-  3. __Artisan__ module
+  1. __[Datastore JDBC](https://github.com/holon-platform/holon-datastore-jdbc)__ module
+  2. __[Vaadin Flow](https://github.com/holon-platform/holon-vaadin-flow)__ module
 
 * __Vaadin Addons:__
   1. [Charts](https://vaadin.com/components/vaadin-charts)
@@ -35,9 +34,9 @@ These are the main features of the Bakery web application:
 This example addresses the following topics:
 
 * Setup a web application using the Holon Platform __Vaadin Flow__ integration and __Spring Boot__ auto-configuration support.
-* Use `Realm` to manage authentication/authorization aspects
-* Use the `Navigator` API to handle application _routing_ and the `@Route` annotation to define routing targets. 
-* Use the Holon Platform `Property` model and `Datastore` API with the Vaadin Flow components to display and manage application entities.
+* Use [__`Realm`__](https://docs.holon-platform.com/current/reference/holon-core.html#Realm) to manage authentication/authorization aspects
+* Use the [__`Navigator`__](https://docs.holon-platform.com/current/reference/holon-vaadin-flow.html#NavigatorAPI) API to handle application _routing_ and the `@Route` annotation to define routing targets. 
+* Use the Holon Platform [__`Property model`__](https://docs.holon-platform.com/current/reference/holon-core.html#Property)  and [__`Datastore`__](https://docs.holon-platform.com/current/reference/holon-core.html#Datastore) API with the Vaadin Flow components to display and manage application entities.
 
 ## Data and routing
 
@@ -67,8 +66,6 @@ It will be prompted username and password to login. Standard users are:
 * admin@holon-platform.com / admin
 * barista@holon-platform.com / barista
 
-Note that the demo will be rendered correctly using FireFox. Chrome still has problems rendering Vaadin Grids.
-
 ## Documentation
 
 The complete _Holon Platform reference guide_ is available [here](https://docs.holon-platform.com/current/reference).
@@ -81,11 +78,12 @@ For the specific documentation about the modules and the components used in this
 
 ## System requirements
 
-The Holon Platform is built using __Java 8__, so you need a JRE/JDK version 8 or above to build and run this demo project.
+You need a JRE/JDK version 8 or above to build and run this demo project.
 
 ## License
 
 All the [Holon Platform](https://holon-platform.com) modules and examples are _Open Source_ software released under the [Apache 2.0 license](LICENSE.md).
+Vaadin Charts and Board are commercial components so you will need a licence to use them. The easiest way to get a license is to subscribe to Vaadin Pro or Vaadin Prime subscription.
 
 ## Holon Platform Examples
 
