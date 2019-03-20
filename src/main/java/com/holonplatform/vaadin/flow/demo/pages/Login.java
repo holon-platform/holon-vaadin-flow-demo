@@ -33,37 +33,36 @@ public class Login extends HorizontalLayout {
 
 	public Login() {
 		super();
-		Components.configure(this).fullSize().spacing().styleName("login-background")
-				.add(Components.vl().width("60%").add(Components.vl().styleName("login-logo-background").spacing()
-						.add(Components.h1().text("Holon Bakery Demo").build())
-						.add(Components.label().sizeUndefined().text("admin@holon-platform.com + admin").build())
-						.add(Components.label().sizeUndefined().text("barista@holon-platform.com + barista")
-								.build())
-						.build()).add(
-								Components
-										.hl().fullWidth().styleName(
-												"login-input")
-										.padding().spacing(true).add(
-												usn = ValidatableInput
-														.builder(Components.input.string().label("Username").required()
-																.prefixComponent(new Icon(VaadinIcon.USER))
-																.styleName("userfield").blankValuesAsNull(
-																		true)
-																.fullWidth().build())
-														.validateOnValueChange(false).withValidator(
-																Validator.notBlank())
-														.build())
-										.add(pwd = ValidatableInput
-												.builder(Components.input.secretString().label("Password").required()
-														.prefixComponent(new Icon(VaadinIcon.LOCK))
-														.styleName("passwordfield").blankValuesAsNull(true).fullWidth()
-														.build())
-												.validateOnValueChange(false).withValidator(Validator.notBlank())
-												.build())
-										.addAndAlign(Components.button().text("Sign in").width("50%")
-												.withThemeVariants(ButtonVariant.LUMO_PRIMARY).onClick(e -> login())
-												.build(), Alignment.BASELINE)
+		Components
+				.configure(this).fullSize().spacing().styleName(
+						"login-background")
+				.add(Components.vl().styleName("login-form").withoutPadding().width("30%")
+						.add(Components.vl().styleName("login-logo-background").spacing()
+								.add(Components.h1().text("Holon Bakery Demo").build())
+								.add(Components.label().sizeUndefined().text("admin@holon-platform.com + admin")
 										.build())
+								.add(Components.label().sizeUndefined().text("barista@holon-platform.com + barista")
+										.build())
+								.build())
+						.add(Components
+								.vl().fullWidth().styleName(
+										"login-input")
+								.padding().add(
+										usn = ValidatableInput.builder(Components.input.string().label("Username")
+												.required().prefixComponent(new Icon(VaadinIcon.USER))
+												.styleName("userfield").blankValuesAsNull(true).fullWidth().build())
+												.validateOnValueChange(
+														false)
+												.withValidator(Validator.notBlank()).build())
+								.add(pwd = ValidatableInput
+										.builder(Components.input.secretString().label("Password").required()
+												.prefixComponent(new Icon(VaadinIcon.LOCK)).styleName("passwordfield")
+												.blankValuesAsNull(true).fullWidth().build())
+										.validateOnValueChange(false).withValidator(Validator.notBlank()).build())
+								.addAndAlign(Components.button().text("Sign in").fullWidth()
+										.withThemeVariants(ButtonVariant.LUMO_PRIMARY).onClick(e -> login()).build(),
+										Alignment.BASELINE)
+								.justifyContentMode(JustifyContentMode.CENTER).build())
 						.build())
 				.justifyContentMode(JustifyContentMode.CENTER).alignItems(Alignment.CENTER);
 		usn.focus();

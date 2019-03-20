@@ -55,8 +55,7 @@ public class Users extends VerticalLayout implements QueryConfigurationProvider,
 	@PostConstruct
 	public void init() {
 
-		searchField = Components.input.string()/* .fullWidth() */.placeholder("Search")
-				.prefixComponent(new Icon(VaadinIcon.SEARCH))
+		searchField = Components.input.string().placeholder("Search").prefixComponent(new Icon(VaadinIcon.SEARCH))
 				.withValueChangeListener(event -> propertyListing.refresh()).valueChangeMode(ValueChangeMode.EAGER)
 				.build();
 

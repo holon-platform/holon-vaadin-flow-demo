@@ -7,38 +7,48 @@
       	}
 		
 		/* LOGIN */
+		
+		.login-form {
+			border-radius: 5px 5px 5px 5px;
+			-webkit-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.15);
+			-moz-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.15);
+			box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.15);
+		}
+		
 		.login-background {
 			background-color: #f3f5f7;
 		}
 		
 		.login-logo-background {
-	 		width: 100%;
+	 		width: 30%;
     		height: 250px;
-    		background-image: url("frontend/styles/bakery-background.jpg");
+    		background-image: url("frontend/styles/bakery-background_small.jpg");
     		background-position: center;
     		background-repeat: no-repeat;
     		background-size: cover;
-    		border-radius: 5px 5px 0px 0px;
     		color: white;
-    		font-weight: bold;
+    		font-size: 20px;
+			font-weight: lighter;
+    		border-radius: 5px 5px 0px 0px;
 		}
 		
 		@-moz-document url-prefix() {
 			.login-logo-background {
 	 			width: 100%;
     			height: 250px;
-    			background-image: url("bakery-background.jpg");
+    			background-image: url("bakery-background_small.jpg");
     			background-position: center;
     			background-repeat: no-repeat;
     			background-size: cover;
-    			border-radius: 5px 5px 0px 0px;
     			color: white;
-    			font-weight: bold;
+    			font-size: 20px;
+				font-weight: lighter;
+    			border-radius: 5px 5px 0px 0px;
 			}
 		}
 		
 		.login-logo-background > h1 {
-			font-weight: 100;
+			font-weight: 600;
 			color: white;
 		}
 		

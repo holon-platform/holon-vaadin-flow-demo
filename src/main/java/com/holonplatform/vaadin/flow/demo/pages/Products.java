@@ -114,7 +114,7 @@ public class Products extends VerticalLayout implements QueryConfigurationProvid
 									form.setValue(evt.getItem());
 									btnInsertUpdate.setText("Update");
 								}).build(), 1d)
-						// user form and buttons
+						// product form and buttons
 						.add(Components.vl().sizeUndefined().fullHeight().withoutPadding().add(form)
 								.addAndExpand(new Div(), 1d)
 								.add(Components.hl().spacing().add(btnInsertUpdate = Components.button().text("Update")

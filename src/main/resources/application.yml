@@ -2,13 +2,6 @@ holon:
   datasource:
     url: "jdbc:h2:mem:test"
     username: "sa"
-  datastore:
-    trace: true
-        
-spring:
-  h2:
-    console:
-      enabled: true
 
 server:
   port: 8080
