@@ -8,10 +8,10 @@ import com.holonplatform.auth.exceptions.AuthenticationException;
 import com.holonplatform.core.Validator;
 import com.holonplatform.vaadin.flow.components.Components;
 import com.holonplatform.vaadin.flow.components.ValidatableInput;
+import com.holonplatform.vaadin.flow.demo.root.MainLayout;
 import com.holonplatform.vaadin.flow.navigator.Navigator;
 import com.holonplatform.vaadin.flow.navigator.annotations.OnShow;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
@@ -19,8 +19,7 @@ import com.vaadin.flow.component.notification.Notification.Position;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.Route;
 
-@HtmlImport("frontend://styles/shared-styles.html")
-@Route(value = "login")
+@Route(value = "login", layout = MainLayout.class)
 public class Login extends HorizontalLayout {
 
 	private static final long serialVersionUID = 1L;

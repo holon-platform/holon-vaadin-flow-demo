@@ -18,11 +18,9 @@ package com.holonplatform.vaadin.flow.demo.dialogs;
 import com.holonplatform.vaadin.flow.components.Components;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasTheme;
-import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 
-@HtmlImport("frontend://com-holonplatform-demo-dialogs-styles.html")
 public abstract class AbstractOrderDialog extends Dialog implements HasTheme {
 
 	private static final long serialVersionUID = 1L;

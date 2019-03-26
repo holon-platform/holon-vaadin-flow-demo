@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import com.holonplatform.auth.AuthContext;
 import com.holonplatform.auth.Authentication;
 import com.holonplatform.auth.Authentication.AuthenticationListener;
+import com.holonplatform.auth.annotations.Authenticate;
+import com.holonplatform.http.HttpHeaders;
 import com.holonplatform.vaadin.flow.components.Components;
 import com.holonplatform.vaadin.flow.demo.enums.UserRole;
 import com.holonplatform.vaadin.flow.navigator.Navigator;
@@ -23,6 +25,7 @@ import com.vaadin.flow.router.RouterLayout;
 import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.spring.annotation.UIScope;
 
+@Authenticate(schemes = HttpHeaders.SCHEME_BASIC, redirectURI = "login")
 @ParentLayout(MainLayout.class)
 @Component
 @UIScope

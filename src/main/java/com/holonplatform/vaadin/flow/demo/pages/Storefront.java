@@ -12,14 +12,12 @@ import com.holonplatform.vaadin.flow.demo.models.Customer;
 import com.holonplatform.vaadin.flow.demo.models.Order;
 import com.holonplatform.vaadin.flow.demo.root.Menu;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Route;
 
-@HtmlImport("frontend://com-holonplatform-demo-storefront-styles.html")
 @Route(value = "", layout = Menu.class)
 public class Storefront extends VerticalLayout {
 
@@ -53,7 +51,7 @@ public class Storefront extends VerticalLayout {
 									omd.open();
 								}).build())
 						.build())
-				.add(storefrontListing);
+				.add(storefrontListing).flexGrow(1, storefrontListing);
 	}
 
 	private QueryFilter buildFilter() {

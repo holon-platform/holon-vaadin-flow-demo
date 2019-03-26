@@ -42,7 +42,7 @@ public class StorefrontListing extends Component implements QueryConfigurationPr
 
 	public StorefrontListing() {
 		super();
-		setSizeFull();
+		setWidthFull();
 
 		Datastore datastore = Context.get().resource(Datastore.class)
 				.orElseThrow(() -> new IllegalStateException("Cannot retrieve Datastore from Context."));
