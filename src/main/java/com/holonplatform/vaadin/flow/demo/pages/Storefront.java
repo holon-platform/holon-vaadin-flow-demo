@@ -10,7 +10,7 @@ import com.holonplatform.vaadin.flow.demo.components.StorefrontListing;
 import com.holonplatform.vaadin.flow.demo.dialogs.OrderManageDialog;
 import com.holonplatform.vaadin.flow.demo.models.Customer;
 import com.holonplatform.vaadin.flow.demo.models.Order;
-import com.holonplatform.vaadin.flow.demo.root.Menu;
+import com.holonplatform.vaadin.flow.demo.root.BakeryAppLayout;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -18,7 +18,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Route;
 
-@Route(value = "", layout = Menu.class)
+@Route(value = "", layout = BakeryAppLayout.class)
 public class Storefront extends VerticalLayout {
 
 	private static final long serialVersionUID = 1L;
@@ -38,7 +38,7 @@ public class Storefront extends VerticalLayout {
 					storefrontListing.refresh();
 				}).valueChangeMode(ValueChangeMode.EAGER).build();
 
-		Components.configure(this).fullWidth().spacing().withoutMargin()
+		Components.configure(this).fullSize().spacing().withoutMargin()
 				// horizontal toolbar
 				.add(Components.hl().fullWidth().spacing()
 						// search field

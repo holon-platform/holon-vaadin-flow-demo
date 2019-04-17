@@ -18,7 +18,7 @@ import com.holonplatform.vaadin.flow.components.Selectable.SelectionMode;
 import com.holonplatform.vaadin.flow.demo.components.ManageableForm;
 import com.holonplatform.vaadin.flow.demo.models.Role;
 import com.holonplatform.vaadin.flow.demo.models.User;
-import com.holonplatform.vaadin.flow.demo.root.Menu;
+import com.holonplatform.vaadin.flow.demo.root.BakeryAppLayout;
 import com.holonplatform.vaadin.flow.demo.services.UserService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -32,7 +32,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Route;
 
-@Route(value = "users", layout = Menu.class)
+@Route(value = "users", layout = BakeryAppLayout.class)
 public class Users extends VerticalLayout implements QueryConfigurationProvider, ManageableForm {
 
 	private static final long serialVersionUID = 1L;
@@ -68,7 +68,7 @@ public class Users extends VerticalLayout implements QueryConfigurationProvider,
 				.bind(User.PASSWORD, password).build();
 		form.setEnabled(false);
 
-		Components.configure(this).spacing().withoutMargin()
+		Components.configure(this).fullSize().spacing().withoutMargin()
 				// horizontal toolbar
 				.add(Components.hl().fullWidth().spacing()
 						// search field
@@ -102,17 +102,21 @@ public class Users extends VerticalLayout implements QueryConfigurationProvider,
 
 						.add(Components.vl().sizeUndefined().fullHeight().withoutPadding().add(form)
 								.addAndExpand(new Div(), 1d)
-								.add(Components.hl().fullWidth().spacing().add(btnInsertUpdate = Components.button()
-										.text("Update")
-										.withThemeVariants(ButtonVariant.LUMO_SUCCESS, ButtonVariant.LUMO_PRIMARY)
-										.onClick(event -> save()).fullWidth().build())
-										.add(btnDiscard = Components.button().text("Discard")
-												.onClick(event -> discard()).fullWidth().build())
-										.add(btnDelete = Components.button().text("Delete")
+								.add(Components.hl().fullWidth().spacing().addAndExpand(
+										btnInsertUpdate = Components.button().text("Update")
+												.withThemeVariants(ButtonVariant.LUMO_SUCCESS,
+														ButtonVariant.LUMO_PRIMARY)
+												.onClick(event -> save()).build(),
+										1d)
+										.addAndExpand(
+												btnDiscard = Components
+														.button().text("Discard").onClick(event -> discard()).build(),
+												1d)
+										.addAndExpand(btnDelete = Components.button().text("Delete")
 												.withThemeVariants(ButtonVariant.LUMO_ERROR, ButtonVariant.LUMO_PRIMARY)
 												.onClick(event -> {
 													delete();
-												}).fullWidth().build())
+												}).build(), 1d)
 										.build())
 								.build())
 						.build());
