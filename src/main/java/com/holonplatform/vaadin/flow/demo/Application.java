@@ -36,6 +36,8 @@ import com.vaadin.flow.server.SessionInitListener;
 
 @SpringBootApplication
 public class Application {
+	
+	// app-layout
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
