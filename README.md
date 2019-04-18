@@ -1,6 +1,6 @@
-# Holon platform Vaadin Flow demo application: Bakery online store
+# Holon platform Vaadin Flow demo application: Bakery online store (with Vaadin AppLayout component)
 
-_This is a demo project built with the [Holon Platform](https://holon-platform.com)._
+_This is a demo project built with the [Holon Platform](https://holon-platform.com). In this branch we decided to use the [Vaadin AppLayout component](https://vaadin.com/components/vaadin-app-layout) wich provides a common application layout structure built of a logo, a menu bar and the page contents._ 
 
 ## Description
 
