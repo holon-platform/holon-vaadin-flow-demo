@@ -74,28 +74,21 @@ public class OrderDataServiceImpl implements OrderDataService {
 	@Transactional
 	@Override
 	public void placeOrUpdateOrder(OrderData orderData) {
-//		datastore.isTransactional().ifPresent(transactional -> {
-//			transactional.withTransaction(tx -> {
+		PropertyBox pbCustomer = orderData.getCustomer();
+		PropertyBox pbOrder = orderData.getOrder();
+		List<PropertyBox> pbOrderItems = orderData.getOrderItems();
 
-				PropertyBox pbCustomer = orderData.getCustomer();
-				PropertyBox pbOrder = orderData.getOrder();
-				List<PropertyBox> pbOrderItems = orderData.getOrderItems();
+		customerService.save(pbCustomer);
+		Long customerId = pbCustomer.getValue(Customer.ID);
 
-				customerService.save(pbCustomer);
-				Long customerId = pbCustomer.getValue(Customer.ID);
+		pbOrder.setValue(Order.CUSTOMER, customerId);
+		orderService.save(pbOrder);
+		Long orderId = pbOrder.getValue(Order.ID);
 
-				pbOrder.setValue(Order.CUSTOMER, customerId);
-				orderService.save(pbOrder);
-				Long orderId = pbOrder.getValue(Order.ID);
-
-				pbOrderItems.forEach(pb -> {
-					pb.setValue(OrderItem.ORDER, orderId);
-					orderItemService.save(pb);
-				});
-
-//				tx.commit();
-//			});
-//		});
+		pbOrderItems.forEach(pb -> {
+			pb.setValue(OrderItem.ORDER, orderId);
+			orderItemService.save(pb);
+		});
 	}
 
 	// Analytics
