@@ -45,8 +45,8 @@ public interface Order {
 						.findOne(PickupLocation.LOCATION).get();
 			});
 
-	public static final PropertySet<?> ORDER = PropertySet.of(ID, DUE_DATE, DUE_TIME, PAID, CUSTOMER, STATE,
-			PICKUP_LOCATION, CUSTOMER_FULLNAME, PICKUP_LOCATION_DESCRIPTION);
+	public static final PropertySet<?> ORDER = PropertySet.builderOf(ID, DUE_DATE, DUE_TIME, PAID, CUSTOMER, STATE,
+			PICKUP_LOCATION, CUSTOMER_FULLNAME, PICKUP_LOCATION_DESCRIPTION).identifier(ID).build();
 
 	public static final DataTarget<?> TARGET = DataTarget.named("orders");
 

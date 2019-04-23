@@ -8,9 +8,10 @@ import com.holonplatform.core.property.StringProperty;
 
 public interface PickupLocation {
 
-	public static final NumericProperty<Integer> ID = NumericProperty.create("ID", Integer.class);
-	public static final StringProperty LOCATION = StringProperty.create("LOCATION");
+	public static final NumericProperty<Integer> ID = NumericProperty.create("id", Integer.class);
+	public static final StringProperty LOCATION = StringProperty.create("location");
 
-	public static final PropertySet<Property<?>> PICKUP_LOCATION = PropertySet.of(ID, LOCATION);
+	public static final PropertySet<Property<?>> PICKUP_LOCATION = PropertySet.builderOf(ID, LOCATION).identifier(ID)
+			.build();
 	public static final DataTarget<?> TARGET = DataTarget.named("pickup_location");
 }

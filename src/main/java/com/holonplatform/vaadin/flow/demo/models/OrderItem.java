@@ -32,8 +32,9 @@ public interface OrderItem {
 				.findOne(Product.PRICE).orElse(new Double(0));
 	});
 
-	public static final PropertySet<?> ORDER_ITEM = PropertySet.of(SEQUENCE, ORDER, QUANTITY, PRODUCT, COMMENT,
-			PRODUCT_NAME, PRODUCT_PRICE);
+	public static final PropertySet<?> ORDER_ITEM = PropertySet
+			.builderOf(SEQUENCE, ORDER, QUANTITY, PRODUCT, COMMENT, PRODUCT_NAME, PRODUCT_PRICE).identifier(SEQUENCE)
+			.identifier(ORDER).build();
 	public static final DataTarget<?> TARGET = DataTarget.named("orderitems");
 
 }
