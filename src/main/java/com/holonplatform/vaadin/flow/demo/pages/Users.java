@@ -102,17 +102,21 @@ public class Users extends VerticalLayout implements QueryConfigurationProvider,
 
 						.add(Components.vl().sizeUndefined().fullHeight().withoutPadding().add(form)
 								.addAndExpand(new Div(), 1d)
-								.add(Components.hl().fullWidth().spacing().add(btnInsertUpdate = Components.button()
-										.text("Update")
-										.withThemeVariants(ButtonVariant.LUMO_SUCCESS, ButtonVariant.LUMO_PRIMARY)
-										.onClick(event -> save()).fullWidth().build())
-										.add(btnDiscard = Components.button().text("Discard")
-												.onClick(event -> discard()).fullWidth().build())
-										.add(btnDelete = Components.button().text("Delete")
+								.add(Components.hl().fullWidth().spacing().addAndExpand(
+										btnInsertUpdate = Components.button().text("Update")
+												.withThemeVariants(ButtonVariant.LUMO_SUCCESS,
+														ButtonVariant.LUMO_PRIMARY)
+												.onClick(event -> save()).build(),
+										1d)
+										.addAndExpand(
+												btnDiscard = Components
+														.button().text("Discard").onClick(event -> discard()).build(),
+												1d)
+										.addAndExpand(btnDelete = Components.button().text("Delete")
 												.withThemeVariants(ButtonVariant.LUMO_ERROR, ButtonVariant.LUMO_PRIMARY)
 												.onClick(event -> {
 													delete();
-												}).fullWidth().build())
+												}).build(), 1d)
 										.build())
 								.build())
 						.build());
