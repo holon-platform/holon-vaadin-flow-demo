@@ -31,7 +31,7 @@ public interface User {
 	public static final PropertySet<?> USER = PropertySet.builderOf(ID, EMAIL, NAME, ROLE, USER_ROLE, PASSWORD)
 			.identifier(ID).build();
 	public static final DataTarget<String> TARGET = DataTarget.named("users");
-	
+
 	// User details params
 	public static final String USER_DETAIL_NAME = "USER_DETAIL_NAME";
 	public static final String USER_DETAIL_ID = "USER_DETAIL_ID";

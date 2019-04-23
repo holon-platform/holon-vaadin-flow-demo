@@ -23,8 +23,7 @@ public interface Order {
 	public static final BooleanProperty PAID = BooleanProperty.create("paid")
 			.converter(PropertyValueConverter.numericBoolean(Integer.class));
 	public static final NumericProperty<Long> CUSTOMER = NumericProperty.create("customer", Long.class);
-	public static final PathProperty<OrderState> STATE = PathProperty.create("state", OrderState.class)
-			.converter(PropertyValueConverter.enumByName());
+	public static final PathProperty<OrderState> STATE = PathProperty.create("state", OrderState.class);
 	public static final NumericProperty<Integer> PICKUP_LOCATION = NumericProperty.create("pickup_location",
 			Integer.class);
 
@@ -45,8 +44,8 @@ public interface Order {
 						.findOne(PickupLocation.LOCATION).get();
 			});
 
-	public static final PropertySet<?> ORDER = PropertySet.of(ID, DUE_DATE, DUE_TIME, PAID, CUSTOMER, STATE,
-			PICKUP_LOCATION, CUSTOMER_FULLNAME, PICKUP_LOCATION_DESCRIPTION);
+	public static final PropertySet<?> ORDER = PropertySet.builderOf(ID, DUE_DATE, DUE_TIME, PAID, CUSTOMER, STATE,
+			PICKUP_LOCATION, CUSTOMER_FULLNAME, PICKUP_LOCATION_DESCRIPTION).identifier(ID).build();
 
 	public static final DataTarget<?> TARGET = DataTarget.named("orders");
 

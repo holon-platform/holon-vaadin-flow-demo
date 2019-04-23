@@ -2,7 +2,7 @@ package com.holonplatform.vaadin.flow.demo.enums;
 
 public enum UserRole {
 
-	ADMIN("admin"), BARISTA("barista");
+	ADMIN("admin"), BAKER("baker"), BARISTA("barista");
 
 	private String role;
 

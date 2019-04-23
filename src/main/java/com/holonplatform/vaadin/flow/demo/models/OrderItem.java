@@ -10,8 +10,8 @@ import com.holonplatform.core.property.VirtualProperty;
 
 public interface OrderItem {
 
-	public static final NumericProperty<Long> SEQUENCE = NumericProperty.create("sequence", Long.class);
-	public static final NumericProperty<Long> ORDER = NumericProperty.create("orderid", Long.class);
+	public static final NumericProperty<Long> SEQUENCE = NumericProperty.create("orderItemId.sequence", Long.class);
+	public static final NumericProperty<Long> ORDER = NumericProperty.create("orderItemId.orderid", Long.class);
 	public static final NumericProperty<Integer> QUANTITY = NumericProperty.create("quantity", Integer.class);
 	public static final NumericProperty<Integer> PRODUCT = NumericProperty.create("product", Integer.class);
 	public static final StringProperty COMMENT = StringProperty.create("comment");
@@ -32,8 +32,9 @@ public interface OrderItem {
 				.findOne(Product.PRICE).orElse(new Double(0));
 	});
 
-	public static final PropertySet<?> ORDER_ITEM = PropertySet.of(SEQUENCE, ORDER, QUANTITY, PRODUCT, COMMENT,
-			PRODUCT_NAME, PRODUCT_PRICE);
+	public static final PropertySet<?> ORDER_ITEM = PropertySet
+			.builderOf(SEQUENCE, ORDER, QUANTITY, PRODUCT, COMMENT, PRODUCT_NAME, PRODUCT_PRICE).identifier(SEQUENCE)
+			.identifier(ORDER).build();
 	public static final DataTarget<?> TARGET = DataTarget.named("orderitems");
 
 }
