@@ -1,6 +1,6 @@
-# Holon platform Vaadin Flow demo application: Bakery online store (with Vaadin AppLayout component)
+# Holon platform Vaadin Flow demo application: Bakery online store (with Holon Platform JPA Datastore module)
 
-_This is a demo project built with the [Holon Platform](https://holon-platform.com). In this branch we decided to use the [Vaadin AppLayout component](https://vaadin.com/components/vaadin-app-layout) wich provides a common application layout structure built of a logo, a menu bar and the page contents._ 
+_This is a demo project built with the [Holon Platform](https://holon-platform.com). In this branch, unlike the [master](https://github.com/holon-platform/holon-vaadin-flow-demo/tree/master) and the [app-layout](https://github.com/holon-platform/holon-vaadin-flow-demo/tree/app-layout) branches, we decided to use the [Holon Platform JPA Datastore module](https://docs.holon-platform.com/current/reference/holon-datastore-jpa.html)_ 
 
 ## Description
 
@@ -22,7 +22,7 @@ These are the main features of the Bakery web application:
 * __H2 in memory Database__ with minimal configuration
 
 * __Holon Platform__ with the following modules: 
-  1. __[Datastore JDBC](https://github.com/holon-platform/holon-datastore-jdbc)__ module
+  1. __[Datastore JPA](https://github.com/holon-platform/holon-datastore-jpa)__ module
   2. __[Vaadin Flow](https://github.com/holon-platform/holon-vaadin-flow)__ module
 
 * __Vaadin Addons:__
@@ -40,7 +40,7 @@ This example addresses the following topics:
 
 ## Data and routing
 
-A __JDBC__ `Datastore` backed by a __H2 database__ is used for product data persistence. All tables listed defined in `schema.sql` file are created at startup and populated using the `data.sql` file.
+A __JPA__ `Datastore` backed by a __H2 database__ is used for product data persistence. All tables listed defined in `schema.sql` file are created at startup and populated using the `data.sql` file.
 
 The Bakery application is composed by these _routes_:
 
